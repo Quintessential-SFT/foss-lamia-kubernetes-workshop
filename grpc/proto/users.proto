@@ -1,0 +1,35 @@
+syntax = "proto3";
+
+package users;
+
+service UsersService {
+    rpc GetAllUsers(GetAllUsersInput) returns (UsersResponse) {}
+    rpc AddUser(AddUserInput) returns (UserResponse) {}
+    rpc DeleteUser(DeleteUserInput) returns (UsersResponse) {}
+}
+
+message GetAllUsersInput {
+
+}
+
+message DeleteUserInput {
+    int32 index = 1;
+}
+
+message AddUserInput {
+    string username = 1;
+    string email = 2;
+    string password = 3;
+    int32 age = 4;
+}
+
+message UserResponse {
+    string username = 1;
+    string email = 2;
+    string password = 3;
+    int32 age = 4;
+}
+
+message UsersResponse {
+    repeated UserResponse users = 1;
+}
